@@ -1,0 +1,25 @@
+# Python
+backend/venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments (DO NOT PUSH THESE!)
+.env
+backend/.env
+frontend/.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Uploads (Keeps your repo small)
+backend/uploads/
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+*.log

@@ -1,0 +1,29 @@
+:root {
+  --theme-dark: #191D23;
+  --theme-primary: #57707A;
+  --theme-primary-hover: #465C64;
+  --theme-mid: #7E919F;
+  --theme-light: #979DAB;
+  --theme-muted: #C5BAC4;
+  --theme-bg: #F4F5F7;
+  --theme-card: #FFFFFF;
+  
+  --text-main: #191D23;
+  --text-sub: #7E919F;
+  --border-light: #C5BAC4;
+  
+  --success: #4F7B6B;
+  --success-bg: #DEDCDC;
+  --danger: #b91c1c;
+  --danger-bg: #fee2e2;
+  
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--theme-bg);
+}
+
+body {
+  margin: 0;
+  background-color: var(--theme-bg);
+  color: var(--text-main);
+}
