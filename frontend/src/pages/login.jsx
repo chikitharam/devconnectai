@@ -17,7 +17,8 @@ export default function Login() {
     setLoading(true);
     try {
       const user = await login(form.email, form.password);
-      navigate(user.role === "customer" ? "/customer/dashboard" : "/developer/dashboard");
+      // Redirect based on the role returned by the backend
+      navigate(user.role === "client" ? "/customer/dashboard" : "/developer/dashboard");
     } catch (err) {
       setError(err.response?.data?.detail || "Login failed");
     } finally {

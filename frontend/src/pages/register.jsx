@@ -9,7 +9,7 @@ export default function Register() {
     email: "",
     password: "",
     confirm_password: "",
-    role: "customer",
+    role: "client", // Default role
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,11 @@ export default function Register() {
       navigate("/login");
     } catch (err) {
       const detail = err.response?.data?.detail;
-      setError(typeof detail === "string" ? detail : "Registration failed");
+      // Better error handling to show backend validation errors
+      const errorMsg = Array.isArray(detail) 
+        ? detail.map(d => `${d.loc.join('.')}: ${d.msg}`).join(', ') 
+        : detail || "Registration failed";
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -58,13 +62,14 @@ export default function Register() {
           </div>
         </div>
 
+        {/* FIXED FIELDSET */}
         <fieldset style={{ border: "1px solid #C5BAC4", padding: 15, borderRadius: 5 }}>
           <legend style={{ fontSize: 14, fontWeight: "bold", color: "#7E919F", padding: "0 5px" }}>I am a...</legend>
           <div style={{ display: "flex", gap: 20 }}>
-            <label style={{ display: "flex", alignItems: "center", gap: 5, color: "#191D23" }}>
-              <input type="radio" name="role" value="customer" checked={form.role === "customer"} onChange={onChange} /> Customer
+            <label style={{ display: "flex", alignItems: "center", gap: 5, color: "#191D23", cursor: "pointer" }}>
+              <input type="radio" name="role" value="client" checked={form.role === "client"} onChange={onChange} /> Client
             </label>
-            <label style={{ display: "flex", alignItems: "center", gap: 5, color: "#191D23" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 5, color: "#191D23", cursor: "pointer" }}>
               <input type="radio" name="role" value="developer" checked={form.role === "developer"} onChange={onChange} /> Developer
             </label>
           </div>
